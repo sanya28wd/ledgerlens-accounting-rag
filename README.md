@@ -38,6 +38,9 @@ Open **http://localhost:8000**, choose **Unlock workspace**, and enter your `REV
 Prerequisites: Python 3.12, [uv](https://docs.astral.sh/uv/), and Tesseract with English language data. Node.js 22 is only needed for frontend checks.
 
 ```sh
+git clone https://github.com/sanya28wd/ledgerlens-accounting-rag.git
+cd ledgerlens-accounting-rag
+
 # macOS
 brew install tesseract
 # Ubuntu/Debian instead:
@@ -65,6 +68,8 @@ Open **http://localhost:8000** and unlock the workspace. Do not overwrite an exi
 | `TESSDATA_PREFIX` | Optional path to local Tesseract language data if automatic discovery fails. |
 
 The interface opens without an OpenAI key, but processing and model-backed questions return an explicit configuration error. No simulated answers are substituted. Unlock credentials stay in tab memory; refreshing requires unlocking again.
+
+The repository is private, so the evaluator needs GitHub access before cloning. `.env` and runtime data are intentionally excluded: each evaluator supplies their own keys, and processing creates a fresh local index. Never commit `.env`.
 
 ## Try the four assignment questions
 
@@ -123,6 +128,14 @@ The API acknowledges an upload before processing. One worker processes queued do
 Vector search finds passages with similar meaning; BM25 helps with specific terms and identifiers. Reciprocal Rank Fusion combines rank positions using `1 / (60 + rank)`, avoiding direct addition of incompatible similarity scores. Both searches are restricted to the selected documents. General answers receive up to eight passages. If evidence is insufficient, the application checks all selected text when it fits the 24,000-token context budget; otherwise it reports incomplete coverage and asks for a narrower scope.
 
 Accounting operations use **all selected extracted records**, independent of top-k retrieval. This avoids calculating an incomplete vendor total merely because some invoices ranked below the search cutoff.
+
+### Why these tools and settings
+
+- **FastAPI and Pydantic:** typed request/response contracts and generated API documentation keep the backend straightforward to inspect. Plain JavaScript avoids a separate frontend framework and build requirement for local use.
+- **GPT-6 Luna:** used for language interpretation and schema-constrained extraction/generation. Accounting arithmetic stays in Python. The model is configurable so the evaluator can use a model available to their account; the submitted results apply to the recorded default, not every replacement model.
+- **text-embedding-3-small:** provides embeddings for both questions and chunks through the same provider connector. Model and dimension checks prevent mixing incompatible vectors in an existing index.
+- **500-token chunks with up to 75 overlap:** a practical starting point that balances local context with a bounded answer prompt. Page boundaries preserve citations; overlap carries some neighboring context. These values were not exhaustively optimized, and large tables may need a different approach.
+- **One worker, local OCR and SQLite:** keep setup and state management small. The trade-off is limited throughput and single-instance operation, rather than distributed processing.
 
 ### Accounting and grounding decisions
 
@@ -198,6 +211,8 @@ uv run pytest -q
 **15 local tests passed.** They use real SQLite, vector search, native PDF extraction and OCR, alongside focused accounting, evidence and ranking-metric checks. They cover duplicates, conflicting invoices, missing currency, overdue semantics, statement exclusions, multiple invoices/continuation pages, interrupted jobs, access control and invalid uploads. The 24-invoice test verifies aggregation beyond retrieval limits. Docker OCR and restart persistence were also verified. Full browser/mobile interaction coverage is not claimed.
 
 ### Real-model end-to-end evaluation
+
+Use the **native Python setup** for the complete evaluation sequence below, with the backend and scripts using the same `.env` and `DATA_DIR`. The retrieval and faithfulness scripts read that local database directly. Docker keeps its database in a separate named volume; these scripts do not inspect that volume automatically. Evaluators using Docker can still try every application feature through the UI.
 
 Start the app, then run:
 
