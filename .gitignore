@@ -17,7 +17,8 @@ faithfulness-evaluation-results.json
 AI_Accounting_RAG_Take_Home_Assignment.pdf
 
 # Optional local deployment tooling and generated reports.
-render.yaml
-vercel.json
-scripts/build-web.mjs
 samples/expected.json
+
+# Hosting CLI state and deployment-only credentials.
+.vercel/
+.env.deployment
