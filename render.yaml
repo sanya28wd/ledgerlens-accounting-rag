@@ -2,13 +2,9 @@ services:
   - type: web
     name: ledgerlens-api
     runtime: docker
-    plan: 0.5c-512mb
+    plan: free
     numInstances: 1
     healthCheckPath: /health
-    disk:
-      name: ledgerlens-data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: DATA_DIR
         value: /var/data

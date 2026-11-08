@@ -287,11 +287,11 @@ Changing the embedding model/dimensions requires a fresh compatible index. Stop 
 
 The included `vercel.json`, `render.yaml` and frontend build script support a static Vercel interface with a Render Docker backend. Hosting is optional; local setup above remains the submission's verified runtime.
 
-1. On Render, connect this private repository and create a Blueprint from `render.yaml`. The single-instance service uses a persistent disk at `/var/data`; persistent hosting incurs charges.
+1. On Render, connect this private repository and create a Blueprint from `render.yaml`. The single-instance service uses Render’s free plan without a persistent disk. Uploads and database changes are lost on restarts or redeploys, and the service sleeps after inactivity.
 2. Supply backend `OPENAI_API_KEY`, a long random `REVIEWER_KEY`, and `ALLOWED_ORIGINS` as a JSON list of exact permitted frontend origins. Keep one service instance and the Dockerfile's one-worker command. Verify the deployed `/health` endpoint.
 3. Import this repository into Vercel. Use framework preset Other, root directory `.`, install command `npm ci`, build command `npm run build`, and output directory `dist`.
 4. Set Vercel `PUBLIC_API_URL` to the backend's HTTPS base URL, without `/api`. This value is public. Never put the OpenAI or reviewer key in the frontend build environment.
 5. Set Render `ALLOWED_ORIGINS` to the exact Vercel production origin, for example `["https://your-project.vercel.app"]`, and redeploy the backend.
-6. Unlock the hosted interface, process a sample, ask a question, inspect a citation and restart the backend to verify persistence. Local uploads are not transferred automatically.
+6. Unlock the hosted interface, process a sample, ask a question, inspect a citation and verify the backend responds after waking from inactivity. Local uploads are not transferred automatically.
 
 For a local static-build check: `PUBLIC_API_URL=https://example.onrender.com npm run build`. GitHub deployment integrations must be granted access to the private repository. Keep `.env` and hosting access tokens out of Git.
