@@ -92,40 +92,21 @@ Retry and delete actions are available in the document library. Loading the same
 
 ## Architecture and design note
 
-Diagram links: [high-level design](#high-level-design) · [ingestion flow](#ingestion-flow) · [answering flow](#answering-flow). The diagrams render directly on GitHub; no presentation website is required.
+Diagram links: [high-level design](#high-level-design) · [ingestion flow](#ingestion-flow) · [answering flow](#answering-flow). The original Archify diagrams are embedded below as SVGs. Each also has a standalone interactive HTML version: download it and open it in a browser. No presentation site or recording material is included.
 
 ### High-level design
 
-```mermaid
-flowchart LR
-    UI["1. Reviewer interface<br/>Upload, chat, citations"]
-    API["2. FastAPI application<br/>Protected API + one ingestion worker"]
-    OCR["3. PDF / OCR subprocess<br/>PyMuPDF + Tesseract"]
-    LLM["4. OpenAI API<br/>Extraction, embeddings, intent, answers"]
-    DB[("5. Local persistent storage<br/>SQLite + FTS5 + sqlite-vec<br/>Original documents on disk")]
-    UI -->|HTTP + reviewer key| API
-    API -->|Extract pages| OCR
-    API -->|HTTPS| LLM
-    API <-->|Read / write| DB
-    API -->|Answer + sources| UI
-```
+![High-level runtime architecture](docs/diagrams/high-level.svg)
+
+[View full-size diagram](docs/diagrams/high-level.svg) · [Download interactive Archify diagram](docs/diagrams/high-level.html)
 
 I kept one modular application rather than introducing microservices or a message broker. SQLite holds document states, extracted pages, accounting records, chunks and embeddings. FTS5 handles BM25 keyword search; sqlite-vec supplies cosine distance for exact filtered vector scanning. One database keeps processed-data publication transactional and setup small. This is suitable for the assignment's corpus, not a large-scale approximate-nearest-neighbor service.
 
 ### Ingestion flow
 
-```mermaid
-flowchart TD
-    A1["A1. Validate upload<br/>main.py: signature, extension, size, duplicate hash"]
-    A2["A2. Persist original and queue job<br/>storage.py: one worker claims it"]
-    A3["A3. Extract numbered pages<br/>extract.py: native text or OCR"]
-    A4["A4. Extract typed accounting facts<br/>provider.py + models.py: fields and excerpts"]
-    A5a["A5a. Validate field evidence<br/>evidence.py: page, value, label, date, currency"]
-    A5b["A5b. Build page-contained chunks<br/>chunking.py: 500-token target, up to 75 overlap"]
-    A6["A6. Embed chunk text<br/>text-embedding-3-small"]
-    A7["A7. Commit processed data, then mark ready<br/>storage.py: pages, facts, chunks, vectors and FTS"]
-    A1 -->|202 Accepted| A2 --> A3 --> A4 --> A5a --> A5b --> A6 --> A7
-```
+![Low-level ingestion flow](docs/diagrams/ingestion.svg)
+
+[View full-size diagram](docs/diagrams/ingestion.svg) · [Download interactive Archify diagram](docs/diagrams/ingestion.html)
 
 `ingestion.py` orchestrates these steps; arrows represent execution/data handoffs, not helper-to-helper imports. PyMuPDF extracts native text and positional blocks. Tesseract handles scanned pages and image regions on mixed pages. OCR runs in a separate, killable process with a 180-second extraction timeout.
 
@@ -135,21 +116,9 @@ The API acknowledges an upload before processing. One worker processes queued do
 
 ### Answering flow
 
-```mermaid
-flowchart TD
-    B1["B1. Validate selected ready documents<br/>answers.py"]
-    B2["B2. Interpret question and follow-up references<br/>Typed intent + explicit reference date"]
-    B3A["B3A. Accounting functions<br/>accounting.py: all selected records, Decimal"]
-    B3B["B3B. Hybrid retrieval<br/>retrieval.py + storage.py: 20 vector + 20 BM25 candidates"]
-    B4B["B4B. Reciprocal Rank Fusion<br/>Up to 8 passages supplied to answer generation"]
-    B5B["B5B. Validate supplied source IDs<br/>Insufficient evidence: full-document check within token budget"]
-    B6["B6. Return answer<br/>Claims, sources, calculation rows, issues and coverage"]
-    B1 --> B2
-    B2 -->|Invoice fields, totals, overdue, expenses| B3A
-    B2 -->|General question| B3B --> B4B --> B5B
-    B3A --> B6
-    B5B --> B6
-```
+![Low-level answering flow](docs/diagrams/answering.svg)
+
+[View full-size diagram](docs/diagrams/answering.svg) · [Download interactive Archify diagram](docs/diagrams/answering.html)
 
 Vector search finds passages with similar meaning; BM25 helps with specific terms and identifiers. Reciprocal Rank Fusion combines rank positions using `1 / (60 + rank)`, avoiding direct addition of incompatible similarity scores. Both searches are restricted to the selected documents. General answers receive up to eight passages. If evidence is insufficient, the application checks all selected text when it fits the 24,000-token context budget; otherwise it reports incomplete coverage and asks for a narrower scope.
 
@@ -164,6 +133,8 @@ Accounting operations use **all selected extracted records**, independent of top
 - Expense summaries process verified debit rows from one statement, excluding transfers, deposits, balances and unresolved rows. Multiple statements require clarification to avoid overlapping-period double counting.
 - Non-null extracted fields require matching page excerpts and additional value checks. Ambiguous dates and currencies remain unresolved. Documents with unresolved accounting fields can still support general questions, with visible issues.
 - Pydantic constrains response structure. Source-ID checks reject invented references; excerpt checks establish that text exists on a page. Neither guarantees semantic correctness. Document content is treated as untrusted evidence.
+
+Diagrams were created with [Archify](https://github.com/tt-a1i/archify). The exported assets retain its embedded software notices. The high-level view shows runtime boundaries; the low-level views show ingestion and answering steps.
 
 ### Code map
 
