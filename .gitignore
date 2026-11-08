@@ -20,5 +20,4 @@ AI_Accounting_RAG_Take_Home_Assignment.pdf
 render.yaml
 vercel.json
 scripts/build-web.mjs
-evaluations/
 samples/expected.json

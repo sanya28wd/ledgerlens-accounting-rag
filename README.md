@@ -237,7 +237,15 @@ This reviews the four saved general-RAG/abstention responses, rather than regene
 
 The judge accepted **4/4 saved responses** and rejected **3/3 controls**. The judge uses the configured chat model, so correlated errors remain possible. These are advisory judgments requiring human review, not a guarantee of faithfulness. The generated `faithfulness-evaluation-results.json` includes inputs, rubric and individual reasons.
 
-All model evaluations incur API usage. Retrieval uses one batch of query embeddings; faithfulness makes seven judge requests. Reruns write ignored root-level JSON reports. The results above were observed using `gpt-6-luna` and `text-embedding-3-small`; generated reports are not committed. Run the end-to-end evaluation first to produce the saved answers needed by the faithfulness review.
+All model evaluations incur API usage. Retrieval uses one batch of query embeddings; faithfulness makes seven judge requests. Reruns write ignored root-level JSON reports. The results above were observed using `gpt-6-luna` and `text-embedding-3-small`; saved reports are included below. New runs still write ignored root-level reports, preserving the submitted snapshots. Run the end-to-end evaluation first to produce the saved answers needed by the faithfulness review.
+
+Saved evaluation reports:
+
+- [End-to-end results](evaluations/end-to-end.json): all eleven cases, generated answers and citation checks.
+- [Retrieval comparison](evaluations/retrieval.json): per-question BM25, vector and hybrid rankings, plus aggregate metrics.
+- [Advisory faithfulness review](evaluations/faithfulness.json): rubric, reviewed inputs, reasons and deliberately faulty controls.
+
+These reports contain fictional sample data. The model-based judgments remain advisory; they do not establish guaranteed claim support.
 
 ## Requirement coverage
 
