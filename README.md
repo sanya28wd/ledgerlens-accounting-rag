@@ -4,6 +4,31 @@ An accounting document assistant built with Python, FastAPI and a plain JavaScri
 
 The application supports native and scanned PDFs, PNGs and JPEGs. It combines hybrid retrieval for general questions with deterministic accounting functions for totals and overdue checks. The model interprets documents; Python calculates supported financial results.
 
+## Live demo
+
+**[Open LedgerLens](https://ledgerlens-accounting-rag.vercel.app/)** — hosted on Vercel with a Render Free Docker backend.
+
+1. Click **Unlock workspace** and enter this hosted demo reviewer key:
+
+   ```text
+   YARzw-xESZ1lBW6uebKhjaw5NzaBP6rYSAKxOEC5kSw
+   ```
+
+2. Click **Load samples** and wait for documents to become **Ready**. Samples are fictional; avoid loading them again if they already appear in the shared library.
+3. Try the [four assignment questions](#try-the-four-assignment-questions), then click a citation to inspect its excerpt and original page. For the overdue example, set **As of** to **2026-10-31**.
+
+The hosted demo uses the configured backend OpenAI account; reviewers do not need their own API key. The reviewer key above is intentionally shared for evaluation. Anyone with it can view, upload, query, and delete documents in the same workspace, and model-backed activity consumes the owner's API usage. Use fictional or non-sensitive documents only. Local installations should generate their own reviewer key.
+
+### Free-tier behavior and troubleshooting
+
+- **Slow first request:** Render sleeps after 15 minutes without incoming traffic. Waking typically takes about a minute. If unlocking or loading samples initially fails, open the [backend health endpoint](https://ledgerlens-api-wyey.onrender.com/health), wait until it returns `{"status":"ok"}`, then retry the action in the app.
+- **No durable uploaded library:** The free backend has no persistent disk. Uploads, extracted records, embeddings, and the SQLite database are lost whenever it restarts, redeploys, or spins down. Load samples or re-upload documents after a reset; existing citations to deleted documents will no longer resolve.
+- **Temporary availability:** Free-tier resource and usage limits can interrupt processing or suspend the service. This demo has no guaranteed uptime or uninterrupted background processing.
+- **Core features remain available:** Native PDF extraction, English OCR, questions, accounting calculations, and citations are enabled while the backend is running. Free hosting does not disable these features, but limited compute may slow processing.
+- **Access and provider errors:** Refreshing clears the browser's in-memory reviewer key; unlock again. If the app reports a model authentication, quota, or billing error after the backend is awake, the deployment owner must check the backend OpenAI configuration. Free hosting does not make OpenAI API calls free.
+
+See [Render's free-instance documentation](https://render.com/docs/free) for platform limits. For a local library that survives application restarts, use the Docker setup below with its named volume.
+
 ## Run the application
 
 You need an OpenAI API key. Model calls incur API charges. Choose Docker for the simplest setup, or use the native Python instructions below. Neither option requires a frontend development server.
@@ -69,7 +94,7 @@ Open **http://localhost:8000** and unlock the workspace. Do not overwrite an exi
 
 The interface opens without an OpenAI key, but processing and model-backed questions return an explicit configuration error. No simulated answers are substituted. Unlock credentials stay in tab memory; refreshing requires unlocking again.
 
-The repository is private, so the evaluator needs GitHub access before cloning. `.env` and runtime data are intentionally excluded: each evaluator supplies their own keys, and processing creates a fresh local index. Never commit `.env`.
+The repository is private, so the evaluator needs GitHub access before cloning. `.env` and runtime data are intentionally excluded: each evaluator running locally supplies their own keys, and processing creates a fresh local index. The hosted demo already has backend credentials configured. Never commit `.env`.
 
 ## Try the four assignment questions
 
@@ -283,15 +308,15 @@ The next improvements would be a source-linked correction screen for extracted f
 
 Changing the embedding model/dimensions requires a fresh compatible index. Stop the app, archive the existing data directory, start with a new directory and re-upload documents. Startup rejects incompatible index configuration rather than mixing vectors.
 
-## Optional hosting: Vercel + Render
+## Deployment configuration: Vercel + Render
 
-The included `vercel.json`, `render.yaml` and frontend build script support a static Vercel interface with a Render Docker backend. Hosting is optional; local setup above remains the submission's verified runtime.
+The included `vercel.json`, `render.yaml` and frontend build script support a static Vercel interface with a Render Docker backend. The live demo uses this configuration. Backend health, authentication, OCR readiness, and production-origin CORS were checked during deployment; the hosted app was also confirmed working by its owner. The local test and evaluation results above remain separate from hosted verification.
 
-1. On Render, connect this private repository and create a Blueprint from `render.yaml`. The single-instance service uses Render’s free plan without a persistent disk. Uploads and database changes are lost on restarts or redeploys, and the service sleeps after inactivity.
+1. On Render, connect this private repository and create a Blueprint from `render.yaml`. The single-instance service uses Render’s free plan without a persistent disk. Storage and availability limits are described in [Free-tier behavior and troubleshooting](#free-tier-behavior-and-troubleshooting).
 2. Supply backend `OPENAI_API_KEY`, a long random `REVIEWER_KEY`, and `ALLOWED_ORIGINS` as a JSON list of exact permitted frontend origins. Keep one service instance and the Dockerfile's one-worker command. Verify the deployed `/health` endpoint.
 3. Import this repository into Vercel. Use framework preset Other, root directory `.`, install command `npm ci`, build command `npm run build`, and output directory `dist`.
 4. Set Vercel `PUBLIC_API_URL` to the backend's HTTPS base URL, without `/api`. This value is public. Never put the OpenAI or reviewer key in the frontend build environment.
-5. Set Render `ALLOWED_ORIGINS` to the exact Vercel production origin, for example `["https://your-project.vercel.app"]`, and redeploy the backend.
+5. Set Render `ALLOWED_ORIGINS` to the exact Vercel production origin, `["https://ledgerlens-accounting-rag.vercel.app"]` for the current deployment, and redeploy the backend.
 6. Unlock the hosted interface, process a sample, ask a question, inspect a citation and verify the backend responds after waking from inactivity. Local uploads are not transferred automatically.
 
-For a local static-build check: `PUBLIC_API_URL=https://example.onrender.com npm run build`. GitHub deployment integrations must be granted access to the private repository. Keep `.env` and hosting access tokens out of Git.
+For a local static-build check against the current backend: `PUBLIC_API_URL=https://ledgerlens-api-wyey.onrender.com npm run build`. GitHub deployment integrations must be granted access to the private repository. Keep `.env` and hosting access tokens out of Git.
