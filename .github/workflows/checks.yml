@@ -20,6 +20,3 @@ jobs:
       - run: uv run mypy app scripts tests
       - run: npm run check
       - run: uv run pytest -q
-      - run: npm run build
-        env:
-          PUBLIC_API_URL: https://example.onrender.com

@@ -35,7 +35,7 @@ Open **http://localhost:8000**, choose **Unlock workspace**, and enter your `REV
 
 ### Option 2: Native Python
 
-Prerequisites: Python 3.12, [uv](https://docs.astral.sh/uv/), and Tesseract with English language data. Node.js 22 is only needed for frontend checks and the separate static build.
+Prerequisites: Python 3.12, [uv](https://docs.astral.sh/uv/), and Tesseract with English language data. Node.js 22 is only needed for frontend checks.
 
 ```sh
 # macOS
@@ -222,7 +222,6 @@ uv run ruff check app scripts tests
 uv run mypy app scripts tests
 npm run check
 uv run pytest -q
-PUBLIC_API_URL=https://example.onrender.com npm run build
 ```
 
 **15 local tests passed.** They use real SQLite, vector search, native PDF extraction and OCR, alongside focused accounting, evidence and ranking-metric checks. They cover duplicates, conflicting invoices, missing currency, overdue semantics, statement exclusions, multiple invoices/continuation pages, interrupted jobs, access control and invalid uploads. The 24-invoice test verifies aggregation beyond retrieval limits. Docker OCR and restart persistence were also verified. Full browser/mobile interaction coverage is not claimed.
@@ -237,7 +236,7 @@ uv run python -m scripts.evaluate --url http://localhost:8000
 
 This uploads required fictional fixtures, waits for ingestion and runs [11 specified cases](samples/evaluation.json). It checks expected status, case-insensitive expected facts, expected source-page coverage and whether excerpts exist on their cited pages. These checks do not prove every statement is entailed.
 
-The saved run passed **11/11 cases**: seven accounting, two retrieval/partial-answer and two abstention cases. All nine source-bearing responses included their expected pages. See the [saved end-to-end report](evaluations/end-to-end.json).
+The saved run passed **11/11 cases**: seven accounting, two retrieval/partial-answer and two abstention cases. All nine source-bearing responses included their expected pages. Rerunning the script writes the full report to `evaluation-results.json`.
 
 ### Retrieval comparison
 
@@ -255,7 +254,7 @@ uv run python -m scripts.evaluate_retrieval
 | Vector | 0.750 | 0.938 | 0.958 | 0.861 | 0.865 |
 | Hybrid RRF | 0.833 | 0.854 | 1.000 | 0.896 | 0.912 |
 
-Hybrid had the strongest first-result and overall ranking scores on this diagnostic set; vector had better Recall@3. No parameters were tuned against these results. This small synthetic dataset does not establish general superiority. See the [full retrieval report](evaluations/retrieval.json). Metric definitions follow [Introduction to Information Retrieval](https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-ranked-retrieval-results-1.html).
+Hybrid had the strongest first-result and overall ranking scores on this diagnostic set; vector had better Recall@3. No parameters were tuned against these results. This small synthetic dataset does not establish general superiority. Rerunning writes all per-question rankings and metrics to `retrieval-evaluation-results.json`. Metric definitions follow [Introduction to Information Retrieval](https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-ranked-retrieval-results-1.html).
 
 ### Advisory faithfulness review
 
@@ -265,9 +264,9 @@ uv run python -m scripts.evaluate_faithfulness
 
 This reviews the four saved general-RAG/abstention responses, rather than regenerating them. The rubric checks each claim against its cited excerpts, question relevance and missing-information handling. Three deliberately faulty controls test invented bank details, insufficient citation support and unnecessary refusal; expected verdicts are hidden from the judge.
 
-The judge accepted **4/4 saved responses** and rejected **3/3 controls**. The judge uses the configured chat model, so correlated errors remain possible. These are advisory judgments requiring human review, not a guarantee of faithfulness. The [saved report](evaluations/faithfulness.json) includes inputs, rubric and individual reasons.
+The judge accepted **4/4 saved responses** and rejected **3/3 controls**. The judge uses the configured chat model, so correlated errors remain possible. These are advisory judgments requiring human review, not a guarantee of faithfulness. The generated `faithfulness-evaluation-results.json` includes inputs, rubric and individual reasons.
 
-All model evaluations incur API usage. Retrieval uses one batch of query embeddings; faithfulness makes seven judge requests. Reruns write ignored root-level JSON reports. Saved reports in `evaluations/` record the observed runs using `gpt-6-luna` and `text-embedding-3-small`; they do not replace rerunning the code.
+All model evaluations incur API usage. Retrieval uses one batch of query embeddings; faithfulness makes seven judge requests. Reruns write ignored root-level JSON reports. The results above were observed using `gpt-6-luna` and `text-embedding-3-small`; generated reports are not committed. Run the end-to-end evaluation first to produce the saved answers needed by the faithfulness review.
 
 ## Requirement coverage
 
@@ -287,16 +286,5 @@ All model evaluations incur API usage. Retrieval uses one batch of query embeddi
 This is one protected shared workspace with one ingestion worker, not a multi-tenant product. English printed OCR is supported; handwriting, complex tables and unusual layouts can cause omissions or misinterpretation. Field validation cannot detect every missing row. Statement categories are model-interpreted; no automatic reconciliation, currency conversion or credit-note netting is performed. Chat history is not durable. Exact vector scanning and local SQLite limit scale.
 
 The next improvements would be a source-linked correction screen for extracted fields, statement balance reconciliation, and a larger independently labeled corpus with varied layouts and scan quality. These would improve accounting review before introducing more infrastructure.
-
-## Optional deployment
-
-The application is verified locally. Deployment configurations are provided, but no hosted service is part of this submission.
-
-1. Create a single-instance Render Docker service from `render.yaml`, with its persistent disk mounted at `/var/data`.
-2. Set backend `OPENAI_API_KEY`, `REVIEWER_KEY` and `ALLOWED_ORIGINS` as a JSON list of exact frontend origins.
-3. Import the repository into Vercel using `vercel.json`; set `PUBLIC_API_URL=https://your-api.onrender.com`. The build produces static files in `dist/`.
-4. Verify health, unlock, upload, citations and persistence after a backend restart. Share the reviewer key separately from the repository.
-
-Vercel serves the interface; the browser calls Render directly. Keep one API worker and one service instance for this SQLite-backed queue. Costs include hosting, persistent disk and model usage. No secrets belong in frontend configuration. OpenAI receives extracted text and questions; Responses API storage is disabled.
 
 Changing the embedding model/dimensions requires a fresh compatible index. Stop the app, archive the existing data directory, start with a new directory and re-upload documents. Startup rejects incompatible index configuration rather than mixing vectors.

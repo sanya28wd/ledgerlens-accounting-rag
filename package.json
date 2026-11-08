@@ -3,8 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "tsc -p jsconfig.json",
-    "build": "node scripts/build-web.mjs"
+    "check": "tsc -p jsconfig.json"
   },
   "devDependencies": {
     "typescript": "~5.9.3",

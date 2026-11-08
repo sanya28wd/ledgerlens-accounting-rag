@@ -15,3 +15,10 @@ faithfulness-evaluation-results.json
 # Local interview preparation; excluded from submission.
 .archify/
 AI_Accounting_RAG_Take_Home_Assignment.pdf
+
+# Optional local deployment tooling and generated reports.
+render.yaml
+vercel.json
+scripts/build-web.mjs
+evaluations/
+samples/expected.json
