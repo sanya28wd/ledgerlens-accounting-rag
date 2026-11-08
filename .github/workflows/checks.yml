@@ -1,0 +1,25 @@
+name: Verify
+on: [push, pull_request]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.9.22"
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: sudo apt-get update && sudo apt-get install -y tesseract-ocr tesseract-ocr-eng
+      - run: uv sync --frozen
+      - run: npm ci
+      - run: uv run ruff check app scripts tests
+      - run: uv run mypy app scripts tests
+      - run: npm run check
+      - run: uv run pytest -q
+      - run: npm run build
+        env:
+          PUBLIC_API_URL: https://example.onrender.com

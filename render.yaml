@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: ledgerlens-api
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    disk:
+      name: ledgerlens-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: DATA_DIR
+        value: /var/data
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: REVIEWER_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: CHAT_MODEL
+        value: gpt-6-luna
+      - key: EMBEDDING_MODEL
+        value: text-embedding-3-small

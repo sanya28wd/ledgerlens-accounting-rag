@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="An accounting workspace where every answer has a paper trail."
+    />
+    <title>LedgerLens — Accounting, with evidence.</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <script type="module" src="/assets/app.js"></script>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="LedgerLens home"
+        ><span class="brand-icon">L<span>↗</span></span
+        ><span>LedgerLens<span class="brand-caption">ACCOUNTING INTELLIGENCE</span></span></a
+      >
+      <div class="workspace-label">
+        <span class="workspace-avatar">R</span
+        ><span>Review workspace<small>Private · reviewer access</small></span
+        ><span class="workspace-dot"></span>
+      </div>
+      <div class="sidebar-section">
+        <span class="eyebrow">YOUR LIBRARY</span><span id="document-count" class="count">0</span>
+      </div>
+      <button id="upload-button" class="upload-button"><span>＋</span> Upload documents</button>
+      <input id="file-input" type="file" accept=".pdf,.png,.jpg,.jpeg" multiple hidden />
+      <div class="scope-actions">
+        <span>Include in questions</span
+        ><button id="select-all" class="text-button">Select all</button>
+      </div>
+      <div id="document-list" class="document-list">
+        <div class="library-empty">
+          <span class="library-icon">▤</span>
+          <p>A little paperwork.<br />A lot of clarity.</p>
+          <small>Your uploaded documents<br />will appear here.</small>
+        </div>
+      </div>
+      <div
+        id="drop-zone"
+        class="drop-zone"
+        tabindex="0"
+        role="button"
+        aria-label="Upload or drop documents"
+      >
+        <span>↥</span><strong>Drop files here</strong
+        ><small>PDF, PNG, JPG · up to 10 MB<br />25 pages per document · English</small>
+      </div>
+      <div class="sidebar-footer">
+        <span class="secure-dot"></span> Evidence stays in your workspace<small
+          >Originals retained · sources traceable</small
+        >
+      </div>
+    </aside>
+
+    <main class="main-shell">
+      <header class="topbar">
+        <div class="breadcrumb">Workspace <span>/</span> <strong>Document assistant</strong></div>
+        <button id="access-button" class="access-button">
+          <span class="secure-dot"></span><span id="access-label">Unlock workspace</span
+          ><span class="reviewer-avatar">R</span>
+        </button>
+      </header>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <div class="workspace-grid">
+        <section class="conversation-pane" aria-label="Document conversation">
+          <div class="conversation-header">
+            <div>
+              <span class="eyebrow">DOCUMENT ASSISTANT</span>
+              <h1>A clearer view of your books.</h1>
+              <p>Ask a question. Follow the evidence.</p>
+            </div>
+            <span class="assistant-badge"
+              ><span class="secure-dot"></span> Grounded in your documents</span
+            >
+          </div>
+          <div class="scope-bar">
+            <span id="scope-label">No documents selected</span
+            ><label
+              >As of <input id="as-of" type="date" aria-label="Reference date for payment checks"
+            /></label>
+          </div>
+          <div id="conversation" class="conversation" aria-live="polite">
+            <div id="welcome" class="welcome">
+              <div class="welcome-mark"><span>↗</span></div>
+              <span class="eyebrow">FROM PAPERWORK TO PERSPECTIVE</span>
+              <h2>Your documents.<br />A few good questions.</h2>
+              <p>
+                Turn invoices and statements into answers you can check.<br />Every figure comes
+                with a source.
+              </p>
+              <div class="question-grid">
+                <button
+                  class="question-card"
+                  data-question="What are the invoice numbers, dates, vendors, and total amounts in these invoices?"
+                >
+                  <span class="card-symbol">▤</span><strong>The invoice essentials</strong
+                  ><small>Vendor, dates, amounts. All in one place.</small
+                  ><span class="card-arrow">↗</span>
+                </button>
+                <button
+                  class="question-card"
+                  data-question="Which invoices are overdue based on the information provided?"
+                >
+                  <span class="card-symbol">◷</span><strong>What needs attention?</strong
+                  ><small>Review due dates and payment evidence.</small
+                  ><span class="card-arrow">↗</span>
+                </button>
+                <button
+                  class="question-card"
+                  data-question="Summarise the expenses recorded in this statement."
+                >
+                  <span class="card-symbol">≋</span><strong>Make sense of spending</strong
+                  ><small>A source-backed expense summary.</small><span class="card-arrow">↗</span>
+                </button>
+                <button
+                  class="question-card"
+                  data-question="What is the total amount invoiced by Cedar Supplies?"
+                >
+                  <span class="card-symbol">∑</span><strong>See the full vendor picture</strong
+                  ><small>Totals across every matching invoice.</small
+                  ><span class="card-arrow">↗</span>
+                </button>
+              </div>
+              <div class="sample-callout">
+                <span class="sample-icon">✧</span>
+                <div>
+                  <strong>Take it for a test drive</strong
+                  ><small>Explore a small set of synthetic invoices and a statement.</small>
+                </div>
+                <button id="samples-button" class="text-button">
+                  Load samples <span>↗</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <form id="chat-form" class="composer-wrap">
+            <div class="composer">
+              <label class="sr-only" for="question">Your question</label
+              ><textarea
+                id="question"
+                rows="1"
+                maxlength="2000"
+                placeholder="Ask about your selected documents…"
+              ></textarea
+              ><button id="send-button" type="submit" aria-label="Send question">↑</button>
+            </div>
+            <div class="composer-caption">
+              <span>↳ Answers grounded in the selected documents.</span
+              ><button id="clear-chat" class="text-button" type="button">Clear conversation</button>
+            </div>
+          </form>
+        </section>
+
+        <aside id="evidence-panel" class="evidence-pane" aria-label="Source evidence">
+          <div class="evidence-header">
+            <div>
+              <span class="eyebrow">THE PAPER TRAIL</span>
+              <h2>Source evidence</h2>
+            </div>
+            <span class="evidence-count" id="evidence-count">0</span>
+          </div>
+          <div id="evidence-content" class="evidence-content">
+            <div class="evidence-empty">
+              <div class="paper-illustration">
+                <div class="paper-fold"></div>
+                <span></span><span></span><span></span><i>✓</i>
+              </div>
+              <h3>Nothing taken on faith.</h3>
+              <p>
+                Ask a question, then select a citation to see exactly where the answer came from.
+              </p>
+              <div class="evidence-features">
+                <span>01 <strong>Original document</strong></span
+                ><span>02 <strong>Exact page reference</strong></span
+                ><span>03 <strong>Supporting excerpt</strong></span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+    <dialog id="access-dialog">
+      <form id="access-form">
+        <span class="eyebrow">PRIVATE REVIEW WORKSPACE</span>
+        <h2>Welcome to LedgerLens.</h2>
+        <p>Enter your reviewer access key. It stays in this tab’s memory.</p>
+        <label for="reviewer-key">Reviewer access key</label
+        ><input id="reviewer-key" type="password" autocomplete="off" required minlength="16" />
+        <p id="access-error" class="error-text" role="alert"></p>
+        <div class="dialog-actions">
+          <button id="cancel-access" type="button" class="secondary-button">Cancel</button
+          ><button type="submit" class="primary-button">Open workspace ↗</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="preview-dialog">
+      <div class="preview-header">
+        <strong id="preview-name">Document</strong
+        ><button id="close-preview" class="secondary-button">Close ×</button>
+      </div>
+      <iframe id="preview-frame" title="Original document preview"></iframe
+      ><img id="preview-image" alt="Original uploaded accounting document" hidden /><a
+        id="preview-download"
+        class="text-button"
+        download
+        >Download original ↗</a
+      >
+    </dialog>
+  </body>
+</html>

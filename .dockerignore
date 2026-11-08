@@ -1,0 +1,17 @@
+.git
+.env
+.venv
+node_modules
+data
+dist
+tests
+**/__pycache__
+.pytest_cache
+.mypy_cache
+.ruff_cache
+
+.archify
+evaluations
+AI_Accounting_RAG_Take_Home_Assignment.pdf
+*-evaluation-results.json
+evaluation-results.json

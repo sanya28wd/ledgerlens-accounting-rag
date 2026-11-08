@@ -1,0 +1,13 @@
+{
+  "name": "ledgerlens-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc -p jsconfig.json",
+    "build": "node scripts/build-web.mjs"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "prettier": "3.6.2"
+  }
+}

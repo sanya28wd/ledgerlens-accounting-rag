@@ -1,0 +1,17 @@
+.env
+.venv/
+data/
+dist/
+node_modules/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+evaluation-results.json
+.DS_Store
+retrieval-evaluation-results.json
+faithfulness-evaluation-results.json
+
+# Local interview preparation; excluded from submission.
+.archify/
+AI_Accounting_RAG_Take_Home_Assignment.pdf

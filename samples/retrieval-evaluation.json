@@ -1,0 +1,17 @@
+{
+  "files": ["cedar-001.pdf", "cedar-002.pdf", "cedar-003.pdf", "nova-001.pdf", "atlas-unknown.pdf", "october-statement.pdf", "cedar-scan.pdf", "two-invoices.pdf", "multipage-invoice.pdf"],
+  "cases": [
+    {"id":"exact-cedar-id", "question":"What is the due date of invoice CED-002?", "relevant_pages":[["cedar-002.pdf",1]]},
+    {"id":"paid-cedar", "question":"Which Cedar Supplies invoice has already been settled with no outstanding balance?", "relevant_pages":[["cedar-003.pdf",1]]},
+    {"id":"partial-nova", "question":"How much remains outstanding on Nova Studio invoice NOV-001?", "relevant_pages":[["nova-001.pdf",1]]},
+    {"id":"unknown-atlas", "question":"Is the payment status known for Atlas Services invoice ATL-001?", "relevant_pages":[["atlas-unknown.pdf",1]]},
+    {"id":"statement-paraphrase", "question":"Where are the October account movements, incoming funds and outgoing costs listed?", "relevant_pages":[["october-statement.pdf",1]]},
+    {"id":"statement-expenses", "question":"What were the utilities, software and office supplies expenses in October?", "relevant_pages":[["october-statement.pdf",1]]},
+    {"id":"bundle-first", "question":"What is the amount on Bundle Office invoice BUN-001?", "relevant_pages":[["two-invoices.pdf",1]]},
+    {"id":"bundle-second", "question":"What is the amount on Bundle Office invoice BUN-002?", "relevant_pages":[["two-invoices.pdf",2]]},
+    {"id":"horizon-total", "question":"What is the final total on Horizon Office invoice MULTI-001?", "relevant_pages":[["multipage-invoice.pdf",2]]},
+    {"id":"horizon-identity-and-total", "question":"Find the issue date and final total of invoice MULTI-001.", "relevant_pages":[["multipage-invoice.pdf",1],["multipage-invoice.pdf",2]]},
+    {"id":"duplicate-original-scan", "question":"Who is the customer on invoice CED-001?", "relevant_pages":[["cedar-001.pdf",1],["cedar-scan.pdf",1]]},
+    {"id":"cedar-record-coverage", "question":"Find every Cedar Supplies invoice and its amount.", "relevant_pages":[["cedar-001.pdf",1],["cedar-002.pdf",1],["cedar-003.pdf",1],["cedar-scan.pdf",1]]}
+  ]
+}

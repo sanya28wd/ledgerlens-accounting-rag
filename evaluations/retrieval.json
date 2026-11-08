@@ -1,0 +1,2401 @@
+{
+  "created_at": "2026-11-08T09:45:06.865509+00:00",
+  "embedding_model": "text-embedding-3-small",
+  "dataset_sha256": "e8618691eef86cf79b72750db1130a4a1151eefc5408c18ca253a7bfd8af5e1a",
+  "case_count": 12,
+  "corpus_pages": 11,
+  "notes": [
+    "Small synthetic diagnostic set, not a held-out production benchmark.",
+    "Binary page relevance; duplicate chunks on the same page are collapsed after the 8-chunk cutoff.",
+    "All methods use the same selected corpus, 20 candidates per search and an 8-chunk final budget.",
+    "Precision uses k as denominator, including unfilled positions. Recall uses all labeled relevant pages.",
+    "MRR is the macro mean of reciprocal_rank; nDCG uses binary relevance and log2 discount.",
+    "No-relevant-document questions belong to the separate abstention suite; retrieval does not decide abstention."
+  ],
+  "summary": {
+    "bm25": {
+      "1": {
+        "precision": 0.75,
+        "recall": 0.6458333333333334,
+        "reciprocal_rank": 0.75,
+        "ndcg": 0.75
+      },
+      "3": {
+        "precision": 0.41666666666666663,
+        "recall": 0.8958333333333334,
+        "reciprocal_rank": 0.8333333333333334,
+        "ndcg": 0.8603630130990607
+      },
+      "5": {
+        "precision": 0.2833333333333333,
+        "recall": 1.0,
+        "reciprocal_rank": 0.8541666666666666,
+        "ndcg": 0.8962527262718435
+      },
+      "8": {
+        "precision": 0.17708333333333334,
+        "recall": 1.0,
+        "reciprocal_rank": 0.8541666666666666,
+        "ndcg": 0.8962527262718435
+      }
+    },
+    "vector": {
+      "1": {
+        "precision": 0.75,
+        "recall": 0.6041666666666666,
+        "reciprocal_rank": 0.75,
+        "ndcg": 0.75
+      },
+      "3": {
+        "precision": 0.41666666666666663,
+        "recall": 0.9375,
+        "reciprocal_rank": 0.8611111111111112,
+        "ndcg": 0.8645838916590312
+      },
+      "5": {
+        "precision": 0.26666666666666666,
+        "recall": 0.9583333333333334,
+        "reciprocal_rank": 0.8611111111111112,
+        "ndcg": 0.8645838916590312
+      },
+      "8": {
+        "precision": 0.16666666666666666,
+        "recall": 0.9583333333333334,
+        "reciprocal_rank": 0.8611111111111112,
+        "ndcg": 0.8645838916590312
+      }
+    },
+    "hybrid_rrf": {
+      "1": {
+        "precision": 0.8333333333333334,
+        "recall": 0.6875,
+        "reciprocal_rank": 0.8333333333333334,
+        "ndcg": 0.8333333333333334
+      },
+      "3": {
+        "precision": 0.3888888888888889,
+        "recall": 0.8541666666666666,
+        "reciprocal_rank": 0.875,
+        "ndcg": 0.8536730788614096
+      },
+      "5": {
+        "precision": 0.2833333333333333,
+        "recall": 1.0,
+        "reciprocal_rank": 0.8958333333333334,
+        "ndcg": 0.9115684689152417
+      },
+      "8": {
+        "precision": 0.17708333333333334,
+        "recall": 1.0,
+        "reciprocal_rank": 0.8958333333333334,
+        "ndcg": 0.9115684689152417
+      }
+    }
+  },
+  "results": [
+    {
+      "case_id": "exact-cedar-id",
+      "method": "bm25",
+      "pages": [
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "exact-cedar-id",
+      "method": "vector",
+      "pages": [
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "ndcg": 0.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6309297535714575
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6309297535714575
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6309297535714575
+        }
+      }
+    },
+    {
+      "case_id": "exact-cedar-id",
+      "method": "hybrid_rrf",
+      "pages": [
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "paid-cedar",
+      "method": "bm25",
+      "pages": [
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "ndcg": 0.0
+        },
+        "3": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "ndcg": 0.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 0.25,
+          "ndcg": 0.43067655807339306
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 0.25,
+          "ndcg": 0.43067655807339306
+        }
+      }
+    },
+    {
+      "case_id": "paid-cedar",
+      "method": "vector",
+      "pages": [
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "ndcg": 0.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 0.3333333333333333,
+          "ndcg": 0.5
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 0.3333333333333333,
+          "ndcg": 0.5
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 0.3333333333333333,
+          "ndcg": 0.5
+        }
+      }
+    },
+    {
+      "case_id": "paid-cedar",
+      "method": "hybrid_rrf",
+      "pages": [
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "ndcg": 0.0
+        },
+        "3": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "ndcg": 0.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 0.25,
+          "ndcg": 0.43067655807339306
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 0.25,
+          "ndcg": 0.43067655807339306
+        }
+      }
+    },
+    {
+      "case_id": "partial-nova",
+      "method": "bm25",
+      "pages": [
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "partial-nova",
+      "method": "vector",
+      "pages": [
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "partial-nova",
+      "method": "hybrid_rrf",
+      "pages": [
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "unknown-atlas",
+      "method": "bm25",
+      "pages": [
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "unknown-atlas",
+      "method": "vector",
+      "pages": [
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "unknown-atlas",
+      "method": "hybrid_rrf",
+      "pages": [
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "statement-paraphrase",
+      "method": "bm25",
+      "pages": [
+        [
+          "october-statement.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "statement-paraphrase",
+      "method": "vector",
+      "pages": [
+        [
+          "october-statement.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "statement-paraphrase",
+      "method": "hybrid_rrf",
+      "pages": [
+        [
+          "october-statement.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "statement-expenses",
+      "method": "bm25",
+      "pages": [
+        [
+          "october-statement.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "statement-expenses",
+      "method": "vector",
+      "pages": [
+        [
+          "october-statement.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "statement-expenses",
+      "method": "hybrid_rrf",
+      "pages": [
+        [
+          "october-statement.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "bundle-first",
+      "method": "bm25",
+      "pages": [
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "bundle-first",
+      "method": "vector",
+      "pages": [
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "ndcg": 0.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6309297535714575
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6309297535714575
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6309297535714575
+        }
+      }
+    },
+    {
+      "case_id": "bundle-first",
+      "method": "hybrid_rrf",
+      "pages": [
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "ndcg": 0.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6309297535714575
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6309297535714575
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6309297535714575
+        }
+      }
+    },
+    {
+      "case_id": "bundle-second",
+      "method": "bm25",
+      "pages": [
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "bundle-second",
+      "method": "vector",
+      "pages": [
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "bundle-second",
+      "method": "hybrid_rrf",
+      "pages": [
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "horizon-total",
+      "method": "bm25",
+      "pages": [
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "ndcg": 0.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6309297535714575
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6309297535714575
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6309297535714575
+        }
+      }
+    },
+    {
+      "case_id": "horizon-total",
+      "method": "vector",
+      "pages": [
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "horizon-total",
+      "method": "hybrid_rrf",
+      "pages": [
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "horizon-identity-and-total",
+      "method": "bm25",
+      "pages": [
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.4,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "horizon-identity-and-total",
+      "method": "vector",
+      "pages": [
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "reciprocal_rank": 1.0,
+          "ndcg": 0.6131471927654584
+        },
+        "5": {
+          "precision": 0.2,
+          "recall": 0.5,
+          "reciprocal_rank": 1.0,
+          "ndcg": 0.6131471927654584
+        },
+        "8": {
+          "precision": 0.125,
+          "recall": 0.5,
+          "reciprocal_rank": 1.0,
+          "ndcg": 0.6131471927654584
+        }
+      }
+    },
+    {
+      "case_id": "horizon-identity-and-total",
+      "method": "hybrid_rrf",
+      "pages": [
+        [
+          "multipage-invoice.pdf",
+          2
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "reciprocal_rank": 1.0,
+          "ndcg": 0.6131471927654584
+        },
+        "5": {
+          "precision": 0.4,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 0.8772153153380493
+        },
+        "8": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 0.8772153153380493
+        }
+      }
+    },
+    {
+      "case_id": "duplicate-original-scan",
+      "method": "bm25",
+      "pages": [
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "reciprocal_rank": 0.0,
+          "ndcg": 0.0
+        },
+        "3": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6934264036172708
+        },
+        "5": {
+          "precision": 0.4,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6934264036172708
+        },
+        "8": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "reciprocal_rank": 0.5,
+          "ndcg": 0.6934264036172708
+        }
+      }
+    },
+    {
+      "case_id": "duplicate-original-scan",
+      "method": "vector",
+      "pages": [
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.4,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "duplicate-original-scan",
+      "method": "hybrid_rrf",
+      "pages": [
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "multipage-invoice.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.4,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "cedar-record-coverage",
+      "method": "bm25",
+      "pages": [
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.25,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "cedar-record-coverage",
+      "method": "vector",
+      "pages": [
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.25,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    },
+    {
+      "case_id": "cedar-record-coverage",
+      "method": "hybrid_rrf",
+      "pages": [
+        [
+          "cedar-scan.pdf",
+          1
+        ],
+        [
+          "cedar-002.pdf",
+          1
+        ],
+        [
+          "cedar-001.pdf",
+          1
+        ],
+        [
+          "cedar-003.pdf",
+          1
+        ],
+        [
+          "atlas-unknown.pdf",
+          1
+        ],
+        [
+          "nova-001.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          1
+        ],
+        [
+          "two-invoices.pdf",
+          2
+        ]
+      ],
+      "metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.25,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        },
+        "8": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "reciprocal_rank": 1.0,
+          "ndcg": 1.0
+        }
+      }
+    }
+  ]
+}

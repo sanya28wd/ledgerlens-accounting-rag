@@ -1,0 +1,1543 @@
+{
+  "model": "gpt-6-luna",
+  "embedding_model": "text-embedding-3-small",
+  "note": "Source-page coverage measures evidence returned to the user, not semantic entailment. Claim support still needs human review.",
+  "accounting_correct": 7,
+  "accounting_cases": 7,
+  "abstention_correct": 2,
+  "abstention_cases": 2,
+  "citation_excerpts_valid": 11,
+  "results": [
+    {
+      "id": "invoice-fields",
+      "category": "accounting",
+      "status_correct": true,
+      "expected_facts_present": true,
+      "source_page_coverage": 1.0,
+      "citation_excerpts_valid": true,
+      "answer": {
+        "status": "answered",
+        "title": "Invoice details",
+        "claims": [
+          {
+            "text": "cedar-001.pdf: invoice CED-001; vendor Cedar Supplies; issued 2026-09-15; total AED 1200.00.",
+            "source_ids": [
+              "b0a14766p1-7ba7625644",
+              "b0a14766p1-47a4e8bec1",
+              "b0a14766p1-9fe28811e6",
+              "b0a14766p1-d456a15544",
+              "b0a14766p1-43198133c6",
+              "b0a14766p1-fc2d258b8a",
+              "b0a14766p1-1b22b9bb97",
+              "b0a14766p1-7406bff127",
+              "b0a14766p1-cae0a217b4",
+              "b0a14766p1-3e299be293"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "id": "b0a14766p1-7ba7625644",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Invoice number: CED-001"
+          },
+          {
+            "id": "b0a14766p1-47a4e8bec1",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Vendor: Cedar Supplies"
+          },
+          {
+            "id": "b0a14766p1-9fe28811e6",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Invoice date: 2026-09-15"
+          },
+          {
+            "id": "b0a14766p1-d456a15544",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Due date: 2026-10-01"
+          },
+          {
+            "id": "b0a14766p1-43198133c6",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Currency: AED"
+          },
+          {
+            "id": "b0a14766p1-fc2d258b8a",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Subtotal: AED 1200.00"
+          },
+          {
+            "id": "b0a14766p1-1b22b9bb97",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Tax: AED 0.00"
+          },
+          {
+            "id": "b0a14766p1-7406bff127",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Total amount: AED 1200.00"
+          },
+          {
+            "id": "b0a14766p1-cae0a217b4",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Balance due: AED 1200.00"
+          },
+          {
+            "id": "b0a14766p1-3e299be293",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Payment status: unpaid"
+          }
+        ],
+        "calculations": [],
+        "issues": [],
+        "as_of": "2026-10-31",
+        "coverage": "all_accounting_records"
+      }
+    },
+    {
+      "id": "vendor-total",
+      "category": "accounting",
+      "status_correct": true,
+      "expected_facts_present": true,
+      "source_page_coverage": 1.0,
+      "citation_excerpts_valid": true,
+      "answer": {
+        "status": "answered",
+        "title": "Invoices from Cedar Supplies",
+        "claims": [
+          {
+            "text": "Total invoiced by Cedar Supplies: AED 2,500.00 across 3 invoices. Paid invoices are included.",
+            "source_ids": [
+              "b0a14766p1-7ba7625644",
+              "b0a14766p1-47a4e8bec1",
+              "b0a14766p1-9fe28811e6",
+              "b0a14766p1-d456a15544",
+              "b0a14766p1-43198133c6",
+              "b0a14766p1-fc2d258b8a",
+              "b0a14766p1-1b22b9bb97",
+              "b0a14766p1-7406bff127",
+              "b0a14766p1-cae0a217b4",
+              "b0a14766p1-3e299be293",
+              "9675c8abp1-67831d2082",
+              "9675c8abp1-47a4e8bec1",
+              "9675c8abp1-9fe28811e6",
+              "9675c8abp1-d2c5362dc4",
+              "9675c8abp1-43198133c6",
+              "9675c8abp1-de95c2ebb1",
+              "9675c8abp1-1b22b9bb97",
+              "9675c8abp1-824540a260",
+              "9675c8abp1-0b02b636bc",
+              "9675c8abp1-3e299be293",
+              "a146218bp1-accf445024",
+              "a146218bp1-47a4e8bec1",
+              "a146218bp1-9fe28811e6",
+              "a146218bp1-3a340a89f3",
+              "a146218bp1-43198133c6",
+              "a146218bp1-d9c605a091",
+              "a146218bp1-1b22b9bb97",
+              "a146218bp1-03165d30ae",
+              "a146218bp1-604d28a2d0",
+              "a146218bp1-53d3d86529"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "id": "b0a14766p1-7ba7625644",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Invoice number: CED-001"
+          },
+          {
+            "id": "b0a14766p1-47a4e8bec1",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Vendor: Cedar Supplies"
+          },
+          {
+            "id": "b0a14766p1-9fe28811e6",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Invoice date: 2026-09-15"
+          },
+          {
+            "id": "b0a14766p1-d456a15544",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Due date: 2026-10-01"
+          },
+          {
+            "id": "b0a14766p1-43198133c6",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Currency: AED"
+          },
+          {
+            "id": "b0a14766p1-fc2d258b8a",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Subtotal: AED 1200.00"
+          },
+          {
+            "id": "b0a14766p1-1b22b9bb97",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Tax: AED 0.00"
+          },
+          {
+            "id": "b0a14766p1-7406bff127",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Total amount: AED 1200.00"
+          },
+          {
+            "id": "b0a14766p1-cae0a217b4",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Balance due: AED 1200.00"
+          },
+          {
+            "id": "b0a14766p1-3e299be293",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Payment status: unpaid"
+          },
+          {
+            "id": "9675c8abp1-67831d2082",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Invoice number: CED-002"
+          },
+          {
+            "id": "9675c8abp1-47a4e8bec1",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Vendor: Cedar Supplies"
+          },
+          {
+            "id": "9675c8abp1-9fe28811e6",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Invoice date: 2026-09-15"
+          },
+          {
+            "id": "9675c8abp1-d2c5362dc4",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Due date: 2026-11-15"
+          },
+          {
+            "id": "9675c8abp1-43198133c6",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Currency: AED"
+          },
+          {
+            "id": "9675c8abp1-de95c2ebb1",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Subtotal: AED 850.00"
+          },
+          {
+            "id": "9675c8abp1-1b22b9bb97",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Tax: AED 0.00"
+          },
+          {
+            "id": "9675c8abp1-824540a260",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Total amount: AED 850.00"
+          },
+          {
+            "id": "9675c8abp1-0b02b636bc",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Balance due: AED 850.00"
+          },
+          {
+            "id": "9675c8abp1-3e299be293",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Payment status: unpaid"
+          },
+          {
+            "id": "a146218bp1-accf445024",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Invoice number: CED-003"
+          },
+          {
+            "id": "a146218bp1-47a4e8bec1",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Vendor: Cedar Supplies"
+          },
+          {
+            "id": "a146218bp1-9fe28811e6",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Invoice date: 2026-09-15"
+          },
+          {
+            "id": "a146218bp1-3a340a89f3",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Due date: 2026-09-30"
+          },
+          {
+            "id": "a146218bp1-43198133c6",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Currency: AED"
+          },
+          {
+            "id": "a146218bp1-d9c605a091",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Subtotal: AED 450.00"
+          },
+          {
+            "id": "a146218bp1-1b22b9bb97",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Tax: AED 0.00"
+          },
+          {
+            "id": "a146218bp1-03165d30ae",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Total amount: AED 450.00"
+          },
+          {
+            "id": "a146218bp1-604d28a2d0",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Balance due: AED 0.00"
+          },
+          {
+            "id": "a146218bp1-53d3d86529",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Payment status: paid"
+          }
+        ],
+        "calculations": [
+          {
+            "label": "Invoice CED-001 \u00b7 cedar-001.pdf",
+            "amount": "1200.00",
+            "currency": "AED",
+            "source_ids": [
+              "b0a14766p1-7ba7625644",
+              "b0a14766p1-47a4e8bec1",
+              "b0a14766p1-9fe28811e6",
+              "b0a14766p1-d456a15544",
+              "b0a14766p1-43198133c6",
+              "b0a14766p1-fc2d258b8a",
+              "b0a14766p1-1b22b9bb97",
+              "b0a14766p1-7406bff127",
+              "b0a14766p1-cae0a217b4",
+              "b0a14766p1-3e299be293"
+            ]
+          },
+          {
+            "label": "Invoice CED-002 \u00b7 cedar-002.pdf",
+            "amount": "850.00",
+            "currency": "AED",
+            "source_ids": [
+              "9675c8abp1-67831d2082",
+              "9675c8abp1-47a4e8bec1",
+              "9675c8abp1-9fe28811e6",
+              "9675c8abp1-d2c5362dc4",
+              "9675c8abp1-43198133c6",
+              "9675c8abp1-de95c2ebb1",
+              "9675c8abp1-1b22b9bb97",
+              "9675c8abp1-824540a260",
+              "9675c8abp1-0b02b636bc",
+              "9675c8abp1-3e299be293"
+            ]
+          },
+          {
+            "label": "Invoice CED-003 \u00b7 cedar-003.pdf",
+            "amount": "450.00",
+            "currency": "AED",
+            "source_ids": [
+              "a146218bp1-accf445024",
+              "a146218bp1-47a4e8bec1",
+              "a146218bp1-9fe28811e6",
+              "a146218bp1-3a340a89f3",
+              "a146218bp1-43198133c6",
+              "a146218bp1-d9c605a091",
+              "a146218bp1-1b22b9bb97",
+              "a146218bp1-03165d30ae",
+              "a146218bp1-604d28a2d0",
+              "a146218bp1-53d3d86529"
+            ]
+          }
+        ],
+        "issues": [],
+        "as_of": "2026-10-31",
+        "coverage": "all_accounting_records"
+      }
+    },
+    {
+      "id": "overdue",
+      "category": "accounting",
+      "status_correct": true,
+      "expected_facts_present": true,
+      "source_page_coverage": 1.0,
+      "citation_excerpts_valid": true,
+      "answer": {
+        "status": "answered",
+        "title": "Payment review \u00b7 2026-10-31",
+        "claims": [
+          {
+            "text": "CED-001 \u00b7 Cedar Supplies: confirmed overdue; due 2026-10-01.",
+            "source_ids": [
+              "b0a14766p1-7ba7625644",
+              "b0a14766p1-47a4e8bec1",
+              "b0a14766p1-9fe28811e6",
+              "b0a14766p1-d456a15544",
+              "b0a14766p1-43198133c6",
+              "b0a14766p1-fc2d258b8a",
+              "b0a14766p1-1b22b9bb97",
+              "b0a14766p1-7406bff127",
+              "b0a14766p1-cae0a217b4",
+              "b0a14766p1-3e299be293"
+            ]
+          },
+          {
+            "text": "CED-002 \u00b7 Cedar Supplies: not overdue as of 2026-10-31; due 2026-11-15.",
+            "source_ids": [
+              "9675c8abp1-67831d2082",
+              "9675c8abp1-47a4e8bec1",
+              "9675c8abp1-9fe28811e6",
+              "9675c8abp1-d2c5362dc4",
+              "9675c8abp1-43198133c6",
+              "9675c8abp1-de95c2ebb1",
+              "9675c8abp1-1b22b9bb97",
+              "9675c8abp1-824540a260",
+              "9675c8abp1-0b02b636bc",
+              "9675c8abp1-3e299be293"
+            ]
+          },
+          {
+            "text": "CED-003 \u00b7 Cedar Supplies: paid / no outstanding balance.",
+            "source_ids": [
+              "a146218bp1-accf445024",
+              "a146218bp1-47a4e8bec1",
+              "a146218bp1-9fe28811e6",
+              "a146218bp1-3a340a89f3",
+              "a146218bp1-43198133c6",
+              "a146218bp1-d9c605a091",
+              "a146218bp1-1b22b9bb97",
+              "a146218bp1-03165d30ae",
+              "a146218bp1-604d28a2d0",
+              "a146218bp1-53d3d86529"
+            ]
+          },
+          {
+            "text": "NOV-001 \u00b7 Nova Studio: confirmed overdue; due 2026-10-10.",
+            "source_ids": [
+              "93d094efp1-40f84d834f",
+              "93d094efp1-1d6f2ff117",
+              "93d094efp1-9fe28811e6",
+              "93d094efp1-179043ae4c",
+              "93d094efp1-a8b3db401a",
+              "93d094efp1-0eb3942992",
+              "93d094efp1-480a099a67",
+              "93d094efp1-0d17438d0b",
+              "93d094efp1-912366c37b",
+              "93d094efp1-a345b61d2a"
+            ]
+          },
+          {
+            "text": "ATL-001 \u00b7 Atlas Services: past its due date (2026-10-15), but payment status is unknown; overdue payment is unconfirmed.",
+            "source_ids": [
+              "6d8da22bp1-f9491ceee1",
+              "6d8da22bp1-dd8d57ddbc",
+              "6d8da22bp1-9fe28811e6",
+              "6d8da22bp1-61837d483f",
+              "6d8da22bp1-43198133c6",
+              "6d8da22bp1-1a1ac34c6b",
+              "6d8da22bp1-1b22b9bb97",
+              "6d8da22bp1-3316bd9a1b"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "id": "b0a14766p1-7ba7625644",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Invoice number: CED-001"
+          },
+          {
+            "id": "b0a14766p1-47a4e8bec1",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Vendor: Cedar Supplies"
+          },
+          {
+            "id": "b0a14766p1-9fe28811e6",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Invoice date: 2026-09-15"
+          },
+          {
+            "id": "b0a14766p1-d456a15544",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Due date: 2026-10-01"
+          },
+          {
+            "id": "b0a14766p1-43198133c6",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Currency: AED"
+          },
+          {
+            "id": "b0a14766p1-fc2d258b8a",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Subtotal: AED 1200.00"
+          },
+          {
+            "id": "b0a14766p1-1b22b9bb97",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Tax: AED 0.00"
+          },
+          {
+            "id": "b0a14766p1-7406bff127",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Total amount: AED 1200.00"
+          },
+          {
+            "id": "b0a14766p1-cae0a217b4",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Balance due: AED 1200.00"
+          },
+          {
+            "id": "b0a14766p1-3e299be293",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "Payment status: unpaid"
+          },
+          {
+            "id": "9675c8abp1-67831d2082",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Invoice number: CED-002"
+          },
+          {
+            "id": "9675c8abp1-47a4e8bec1",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Vendor: Cedar Supplies"
+          },
+          {
+            "id": "9675c8abp1-9fe28811e6",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Invoice date: 2026-09-15"
+          },
+          {
+            "id": "9675c8abp1-d2c5362dc4",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Due date: 2026-11-15"
+          },
+          {
+            "id": "9675c8abp1-43198133c6",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Currency: AED"
+          },
+          {
+            "id": "9675c8abp1-de95c2ebb1",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Subtotal: AED 850.00"
+          },
+          {
+            "id": "9675c8abp1-1b22b9bb97",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Tax: AED 0.00"
+          },
+          {
+            "id": "9675c8abp1-824540a260",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Total amount: AED 850.00"
+          },
+          {
+            "id": "9675c8abp1-0b02b636bc",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Balance due: AED 850.00"
+          },
+          {
+            "id": "9675c8abp1-3e299be293",
+            "document_id": "9675c8abc4fc46048f85e7434c422420",
+            "document_name": "cedar-002.pdf",
+            "page": 1,
+            "excerpt": "Payment status: unpaid"
+          },
+          {
+            "id": "a146218bp1-accf445024",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Invoice number: CED-003"
+          },
+          {
+            "id": "a146218bp1-47a4e8bec1",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Vendor: Cedar Supplies"
+          },
+          {
+            "id": "a146218bp1-9fe28811e6",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Invoice date: 2026-09-15"
+          },
+          {
+            "id": "a146218bp1-3a340a89f3",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Due date: 2026-09-30"
+          },
+          {
+            "id": "a146218bp1-43198133c6",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Currency: AED"
+          },
+          {
+            "id": "a146218bp1-d9c605a091",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Subtotal: AED 450.00"
+          },
+          {
+            "id": "a146218bp1-1b22b9bb97",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Tax: AED 0.00"
+          },
+          {
+            "id": "a146218bp1-03165d30ae",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Total amount: AED 450.00"
+          },
+          {
+            "id": "a146218bp1-604d28a2d0",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Balance due: AED 0.00"
+          },
+          {
+            "id": "a146218bp1-53d3d86529",
+            "document_id": "a146218b11094a61914432d28e099aaa",
+            "document_name": "cedar-003.pdf",
+            "page": 1,
+            "excerpt": "Payment status: paid"
+          },
+          {
+            "id": "93d094efp1-40f84d834f",
+            "document_id": "93d094ef997f426581f64d116e6f6d72",
+            "document_name": "nova-001.pdf",
+            "page": 1,
+            "excerpt": "Invoice number: NOV-001"
+          },
+          {
+            "id": "93d094efp1-1d6f2ff117",
+            "document_id": "93d094ef997f426581f64d116e6f6d72",
+            "document_name": "nova-001.pdf",
+            "page": 1,
+            "excerpt": "Vendor: Nova Studio"
+          },
+          {
+            "id": "93d094efp1-9fe28811e6",
+            "document_id": "93d094ef997f426581f64d116e6f6d72",
+            "document_name": "nova-001.pdf",
+            "page": 1,
+            "excerpt": "Invoice date: 2026-09-15"
+          },
+          {
+            "id": "93d094efp1-179043ae4c",
+            "document_id": "93d094ef997f426581f64d116e6f6d72",
+            "document_name": "nova-001.pdf",
+            "page": 1,
+            "excerpt": "Due date: 2026-10-10"
+          },
+          {
+            "id": "93d094efp1-a8b3db401a",
+            "document_id": "93d094ef997f426581f64d116e6f6d72",
+            "document_name": "nova-001.pdf",
+            "page": 1,
+            "excerpt": "Currency: USD"
+          },
+          {
+            "id": "93d094efp1-0eb3942992",
+            "document_id": "93d094ef997f426581f64d116e6f6d72",
+            "document_name": "nova-001.pdf",
+            "page": 1,
+            "excerpt": "Subtotal: USD 100.00"
+          },
+          {
+            "id": "93d094efp1-480a099a67",
+            "document_id": "93d094ef997f426581f64d116e6f6d72",
+            "document_name": "nova-001.pdf",
+            "page": 1,
+            "excerpt": "Tax: USD 0.00"
+          },
+          {
+            "id": "93d094efp1-0d17438d0b",
+            "document_id": "93d094ef997f426581f64d116e6f6d72",
+            "document_name": "nova-001.pdf",
+            "page": 1,
+            "excerpt": "Total amount: USD 100.00"
+          },
+          {
+            "id": "93d094efp1-912366c37b",
+            "document_id": "93d094ef997f426581f64d116e6f6d72",
+            "document_name": "nova-001.pdf",
+            "page": 1,
+            "excerpt": "Balance due: USD 40.00"
+          },
+          {
+            "id": "93d094efp1-a345b61d2a",
+            "document_id": "93d094ef997f426581f64d116e6f6d72",
+            "document_name": "nova-001.pdf",
+            "page": 1,
+            "excerpt": "Payment status: partial"
+          },
+          {
+            "id": "6d8da22bp1-f9491ceee1",
+            "document_id": "6d8da22be3e147669dcc856cf7b5818c",
+            "document_name": "atlas-unknown.pdf",
+            "page": 1,
+            "excerpt": "Invoice number: ATL-001"
+          },
+          {
+            "id": "6d8da22bp1-dd8d57ddbc",
+            "document_id": "6d8da22be3e147669dcc856cf7b5818c",
+            "document_name": "atlas-unknown.pdf",
+            "page": 1,
+            "excerpt": "Vendor: Atlas Services"
+          },
+          {
+            "id": "6d8da22bp1-9fe28811e6",
+            "document_id": "6d8da22be3e147669dcc856cf7b5818c",
+            "document_name": "atlas-unknown.pdf",
+            "page": 1,
+            "excerpt": "Invoice date: 2026-09-15"
+          },
+          {
+            "id": "6d8da22bp1-61837d483f",
+            "document_id": "6d8da22be3e147669dcc856cf7b5818c",
+            "document_name": "atlas-unknown.pdf",
+            "page": 1,
+            "excerpt": "Due date: 2026-10-15"
+          },
+          {
+            "id": "6d8da22bp1-43198133c6",
+            "document_id": "6d8da22be3e147669dcc856cf7b5818c",
+            "document_name": "atlas-unknown.pdf",
+            "page": 1,
+            "excerpt": "Currency: AED"
+          },
+          {
+            "id": "6d8da22bp1-1a1ac34c6b",
+            "document_id": "6d8da22be3e147669dcc856cf7b5818c",
+            "document_name": "atlas-unknown.pdf",
+            "page": 1,
+            "excerpt": "Subtotal: AED 900.00"
+          },
+          {
+            "id": "6d8da22bp1-1b22b9bb97",
+            "document_id": "6d8da22be3e147669dcc856cf7b5818c",
+            "document_name": "atlas-unknown.pdf",
+            "page": 1,
+            "excerpt": "Tax: AED 0.00"
+          },
+          {
+            "id": "6d8da22bp1-3316bd9a1b",
+            "document_id": "6d8da22be3e147669dcc856cf7b5818c",
+            "document_name": "atlas-unknown.pdf",
+            "page": 1,
+            "excerpt": "Total amount: AED 900.00"
+          }
+        ],
+        "calculations": [
+          {
+            "label": "CED-001 \u00b7 Cedar Supplies \u00b7 outstanding",
+            "amount": "1200.00",
+            "currency": "AED",
+            "source_ids": [
+              "b0a14766p1-7ba7625644",
+              "b0a14766p1-47a4e8bec1",
+              "b0a14766p1-9fe28811e6",
+              "b0a14766p1-d456a15544",
+              "b0a14766p1-43198133c6",
+              "b0a14766p1-fc2d258b8a",
+              "b0a14766p1-1b22b9bb97",
+              "b0a14766p1-7406bff127",
+              "b0a14766p1-cae0a217b4",
+              "b0a14766p1-3e299be293"
+            ]
+          },
+          {
+            "label": "NOV-001 \u00b7 Nova Studio \u00b7 outstanding",
+            "amount": "40.00",
+            "currency": "USD",
+            "source_ids": [
+              "93d094efp1-40f84d834f",
+              "93d094efp1-1d6f2ff117",
+              "93d094efp1-9fe28811e6",
+              "93d094efp1-179043ae4c",
+              "93d094efp1-a8b3db401a",
+              "93d094efp1-0eb3942992",
+              "93d094efp1-480a099a67",
+              "93d094efp1-0d17438d0b",
+              "93d094efp1-912366c37b",
+              "93d094efp1-a345b61d2a"
+            ]
+          }
+        ],
+        "issues": [
+          "atlas-unknown.pdf: Amount paid is not stated.",
+          "atlas-unknown.pdf: Balance due is printed as 'AED Not provided'; no amount is available.",
+          "atlas-unknown.pdf: Payment status is printed as 'Not provided'; no payment status is available."
+        ],
+        "as_of": "2026-10-31",
+        "coverage": "all_accounting_records"
+      }
+    },
+    {
+      "id": "statement-expenses",
+      "category": "accounting",
+      "status_correct": true,
+      "expected_facts_present": true,
+      "source_page_coverage": 1.0,
+      "citation_excerpts_valid": true,
+      "answer": {
+        "status": "answered",
+        "title": "Statement expense summary",
+        "claims": [
+          {
+            "text": "Identified expenses: AED 400.00 across 3 expense entries.",
+            "source_ids": [
+              "f32d1592p1-56d89aa0ab",
+              "f32d1592p1-56d89aa0ab",
+              "f32d1592p1-43198133c6",
+              "f32d1592p1-56d89aa0ab",
+              "f32d1592p1-7e898b8fcb",
+              "f32d1592p1-7e898b8fcb",
+              "f32d1592p1-43198133c6",
+              "f32d1592p1-7e898b8fcb",
+              "f32d1592p1-b9b0b46cee",
+              "f32d1592p1-b9b0b46cee",
+              "f32d1592p1-43198133c6",
+              "f32d1592p1-b9b0b46cee"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "id": "f32d1592p1-56d89aa0ab",
+            "document_id": "f32d15929b8c48008ce2e04bed659660",
+            "document_name": "october-statement.pdf",
+            "page": 1,
+            "excerpt": "2026-10-02 | Utilities expense | 125.00 | 0.00"
+          },
+          {
+            "id": "f32d1592p1-43198133c6",
+            "document_id": "f32d15929b8c48008ce2e04bed659660",
+            "document_name": "october-statement.pdf",
+            "page": 1,
+            "excerpt": "Currency: AED"
+          },
+          {
+            "id": "f32d1592p1-7e898b8fcb",
+            "document_id": "f32d15929b8c48008ce2e04bed659660",
+            "document_name": "october-statement.pdf",
+            "page": 1,
+            "excerpt": "2026-10-05 | Software expense | 75.00 | 0.00"
+          },
+          {
+            "id": "f32d1592p1-b9b0b46cee",
+            "document_id": "f32d15929b8c48008ce2e04bed659660",
+            "document_name": "october-statement.pdf",
+            "page": 1,
+            "excerpt": "2026-10-08 | Office supplies expense | 200.00 | 0.00"
+          }
+        ],
+        "calculations": [
+          {
+            "label": "Utilities expense",
+            "amount": "125.00",
+            "currency": "AED",
+            "source_ids": [
+              "f32d1592p1-56d89aa0ab",
+              "f32d1592p1-56d89aa0ab",
+              "f32d1592p1-43198133c6",
+              "f32d1592p1-56d89aa0ab"
+            ]
+          },
+          {
+            "label": "Software expense",
+            "amount": "75.00",
+            "currency": "AED",
+            "source_ids": [
+              "f32d1592p1-7e898b8fcb",
+              "f32d1592p1-7e898b8fcb",
+              "f32d1592p1-43198133c6",
+              "f32d1592p1-7e898b8fcb"
+            ]
+          },
+          {
+            "label": "Office supplies expense",
+            "amount": "200.00",
+            "currency": "AED",
+            "source_ids": [
+              "f32d1592p1-b9b0b46cee",
+              "f32d1592p1-b9b0b46cee",
+              "f32d1592p1-43198133c6",
+              "f32d1592p1-b9b0b46cee"
+            ]
+          }
+        ],
+        "issues": [
+          "2 non-expense, ambiguous, or incomplete rows excluded; transfers, deposits and balances are not treated as expenses."
+        ],
+        "as_of": "2026-10-31",
+        "coverage": "all_accounting_records"
+      }
+    },
+    {
+      "id": "scanned-invoice",
+      "category": "accounting",
+      "status_correct": true,
+      "expected_facts_present": true,
+      "source_page_coverage": 1.0,
+      "citation_excerpts_valid": true,
+      "answer": {
+        "status": "answered",
+        "title": "Invoice details",
+        "claims": [
+          {
+            "text": "cedar-scan.pdf: invoice CED-001; vendor Cedar Supplies; issued 2026-09-15; total AED 1200.00.",
+            "source_ids": [
+              "1e79e9fep1-7ba7625644",
+              "1e79e9fep1-47a4e8bec1",
+              "1e79e9fep1-9fe28811e6",
+              "1e79e9fep1-d456a15544",
+              "1e79e9fep1-43198133c6",
+              "1e79e9fep1-fc2d258b8a",
+              "1e79e9fep1-1b22b9bb97",
+              "1e79e9fep1-7406bff127",
+              "1e79e9fep1-cae0a217b4",
+              "1e79e9fep1-3e299be293"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "id": "1e79e9fep1-7ba7625644",
+            "document_id": "1e79e9fe5d96468b9c82febeba0d8c1b",
+            "document_name": "cedar-scan.pdf",
+            "page": 1,
+            "excerpt": "Invoice number: CED-001"
+          },
+          {
+            "id": "1e79e9fep1-47a4e8bec1",
+            "document_id": "1e79e9fe5d96468b9c82febeba0d8c1b",
+            "document_name": "cedar-scan.pdf",
+            "page": 1,
+            "excerpt": "Vendor: Cedar Supplies"
+          },
+          {
+            "id": "1e79e9fep1-9fe28811e6",
+            "document_id": "1e79e9fe5d96468b9c82febeba0d8c1b",
+            "document_name": "cedar-scan.pdf",
+            "page": 1,
+            "excerpt": "Invoice date: 2026-09-15"
+          },
+          {
+            "id": "1e79e9fep1-d456a15544",
+            "document_id": "1e79e9fe5d96468b9c82febeba0d8c1b",
+            "document_name": "cedar-scan.pdf",
+            "page": 1,
+            "excerpt": "Due date: 2026-10-01"
+          },
+          {
+            "id": "1e79e9fep1-43198133c6",
+            "document_id": "1e79e9fe5d96468b9c82febeba0d8c1b",
+            "document_name": "cedar-scan.pdf",
+            "page": 1,
+            "excerpt": "Currency: AED"
+          },
+          {
+            "id": "1e79e9fep1-fc2d258b8a",
+            "document_id": "1e79e9fe5d96468b9c82febeba0d8c1b",
+            "document_name": "cedar-scan.pdf",
+            "page": 1,
+            "excerpt": "Subtotal: AED 1200.00"
+          },
+          {
+            "id": "1e79e9fep1-1b22b9bb97",
+            "document_id": "1e79e9fe5d96468b9c82febeba0d8c1b",
+            "document_name": "cedar-scan.pdf",
+            "page": 1,
+            "excerpt": "Tax: AED 0.00"
+          },
+          {
+            "id": "1e79e9fep1-7406bff127",
+            "document_id": "1e79e9fe5d96468b9c82febeba0d8c1b",
+            "document_name": "cedar-scan.pdf",
+            "page": 1,
+            "excerpt": "Total amount: AED 1200.00"
+          },
+          {
+            "id": "1e79e9fep1-cae0a217b4",
+            "document_id": "1e79e9fe5d96468b9c82febeba0d8c1b",
+            "document_name": "cedar-scan.pdf",
+            "page": 1,
+            "excerpt": "Balance due: AED 1200.00"
+          },
+          {
+            "id": "1e79e9fep1-3e299be293",
+            "document_id": "1e79e9fe5d96468b9c82febeba0d8c1b",
+            "document_name": "cedar-scan.pdf",
+            "page": 1,
+            "excerpt": "Payment status: unpaid"
+          }
+        ],
+        "calculations": [],
+        "issues": [],
+        "as_of": "2026-10-31",
+        "coverage": "all_accounting_records"
+      }
+    },
+    {
+      "id": "multiple-invoices",
+      "category": "accounting",
+      "status_correct": true,
+      "expected_facts_present": true,
+      "source_page_coverage": 1.0,
+      "citation_excerpts_valid": true,
+      "answer": {
+        "status": "answered",
+        "title": "Invoices from Bundle Office",
+        "claims": [
+          {
+            "text": "Total invoiced by Bundle Office: AED 125.00 across 2 invoices. Paid invoices are included.",
+            "source_ids": [
+              "0a9ea6e0p1-882a3b3bb1",
+              "0a9ea6e0p1-cd2ded278a",
+              "0a9ea6e0p1-9fe28811e6",
+              "0a9ea6e0p1-d456a15544",
+              "0a9ea6e0p1-43198133c6",
+              "0a9ea6e0p1-520cce0a79",
+              "0a9ea6e0p1-1b22b9bb97",
+              "0a9ea6e0p1-3ca761d4a2",
+              "0a9ea6e0p1-2a6ef1ff1b",
+              "0a9ea6e0p1-3e299be293",
+              "0a9ea6e0p2-a3c56b9888",
+              "0a9ea6e0p2-cd2ded278a",
+              "0a9ea6e0p2-9fe28811e6",
+              "0a9ea6e0p2-dc05c4e13d",
+              "0a9ea6e0p2-43198133c6",
+              "0a9ea6e0p2-b5960bc678",
+              "0a9ea6e0p2-1b22b9bb97",
+              "0a9ea6e0p2-1a2a1f29d1",
+              "0a9ea6e0p2-ddab9eef09",
+              "0a9ea6e0p2-3e299be293"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "id": "0a9ea6e0p1-882a3b3bb1",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 1,
+            "excerpt": "Invoice number: BUN-001"
+          },
+          {
+            "id": "0a9ea6e0p1-cd2ded278a",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 1,
+            "excerpt": "Vendor: Bundle Office"
+          },
+          {
+            "id": "0a9ea6e0p1-9fe28811e6",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 1,
+            "excerpt": "Invoice date: 2026-09-15"
+          },
+          {
+            "id": "0a9ea6e0p1-d456a15544",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 1,
+            "excerpt": "Due date: 2026-10-01"
+          },
+          {
+            "id": "0a9ea6e0p1-43198133c6",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 1,
+            "excerpt": "Currency: AED"
+          },
+          {
+            "id": "0a9ea6e0p1-520cce0a79",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 1,
+            "excerpt": "Subtotal: AED 50.00"
+          },
+          {
+            "id": "0a9ea6e0p1-1b22b9bb97",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 1,
+            "excerpt": "Tax: AED 0.00"
+          },
+          {
+            "id": "0a9ea6e0p1-3ca761d4a2",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 1,
+            "excerpt": "Total amount: AED 50.00"
+          },
+          {
+            "id": "0a9ea6e0p1-2a6ef1ff1b",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 1,
+            "excerpt": "Balance due: AED 50.00"
+          },
+          {
+            "id": "0a9ea6e0p1-3e299be293",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 1,
+            "excerpt": "Payment status: unpaid"
+          },
+          {
+            "id": "0a9ea6e0p2-a3c56b9888",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 2,
+            "excerpt": "Invoice number: BUN-002"
+          },
+          {
+            "id": "0a9ea6e0p2-cd2ded278a",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 2,
+            "excerpt": "Vendor: Bundle Office"
+          },
+          {
+            "id": "0a9ea6e0p2-9fe28811e6",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 2,
+            "excerpt": "Invoice date: 2026-09-15"
+          },
+          {
+            "id": "0a9ea6e0p2-dc05c4e13d",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 2,
+            "excerpt": "Due date: 2026-10-02"
+          },
+          {
+            "id": "0a9ea6e0p2-43198133c6",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 2,
+            "excerpt": "Currency: AED"
+          },
+          {
+            "id": "0a9ea6e0p2-b5960bc678",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 2,
+            "excerpt": "Subtotal: AED 75.00"
+          },
+          {
+            "id": "0a9ea6e0p2-1b22b9bb97",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 2,
+            "excerpt": "Tax: AED 0.00"
+          },
+          {
+            "id": "0a9ea6e0p2-1a2a1f29d1",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 2,
+            "excerpt": "Total amount: AED 75.00"
+          },
+          {
+            "id": "0a9ea6e0p2-ddab9eef09",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 2,
+            "excerpt": "Balance due: AED 75.00"
+          },
+          {
+            "id": "0a9ea6e0p2-3e299be293",
+            "document_id": "0a9ea6e020544e8a8e28e9d5b306e277",
+            "document_name": "two-invoices.pdf",
+            "page": 2,
+            "excerpt": "Payment status: unpaid"
+          }
+        ],
+        "calculations": [
+          {
+            "label": "Invoice BUN-001 \u00b7 two-invoices.pdf",
+            "amount": "50.00",
+            "currency": "AED",
+            "source_ids": [
+              "0a9ea6e0p1-882a3b3bb1",
+              "0a9ea6e0p1-cd2ded278a",
+              "0a9ea6e0p1-9fe28811e6",
+              "0a9ea6e0p1-d456a15544",
+              "0a9ea6e0p1-43198133c6",
+              "0a9ea6e0p1-520cce0a79",
+              "0a9ea6e0p1-1b22b9bb97",
+              "0a9ea6e0p1-3ca761d4a2",
+              "0a9ea6e0p1-2a6ef1ff1b",
+              "0a9ea6e0p1-3e299be293"
+            ]
+          },
+          {
+            "label": "Invoice BUN-002 \u00b7 two-invoices.pdf",
+            "amount": "75.00",
+            "currency": "AED",
+            "source_ids": [
+              "0a9ea6e0p2-a3c56b9888",
+              "0a9ea6e0p2-cd2ded278a",
+              "0a9ea6e0p2-9fe28811e6",
+              "0a9ea6e0p2-dc05c4e13d",
+              "0a9ea6e0p2-43198133c6",
+              "0a9ea6e0p2-b5960bc678",
+              "0a9ea6e0p2-1b22b9bb97",
+              "0a9ea6e0p2-1a2a1f29d1",
+              "0a9ea6e0p2-ddab9eef09",
+              "0a9ea6e0p2-3e299be293"
+            ]
+          }
+        ],
+        "issues": [],
+        "as_of": "2026-10-31",
+        "coverage": "all_accounting_records"
+      }
+    },
+    {
+      "id": "continuation-pages",
+      "category": "accounting",
+      "status_correct": true,
+      "expected_facts_present": true,
+      "source_page_coverage": 1.0,
+      "citation_excerpts_valid": true,
+      "answer": {
+        "status": "answered",
+        "title": "Invoice details",
+        "claims": [
+          {
+            "text": "multipage-invoice.pdf: invoice MULTI-001; vendor Horizon Office; issued 2026-09-15; total AED 100.00.",
+            "source_ids": [
+              "a3f04be7p1-15dd8f02a7",
+              "a3f04be7p1-119d4d66cc",
+              "a3f04be7p1-9fe28811e6",
+              "a3f04be7p2-d456a15544",
+              "a3f04be7p2-43198133c6",
+              "a3f04be7p2-7487df4087",
+              "a3f04be7p2-1b22b9bb97",
+              "a3f04be7p2-0b90a0d61d",
+              "a3f04be7p2-0013115d39",
+              "a3f04be7p2-3e299be293"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "id": "a3f04be7p1-15dd8f02a7",
+            "document_id": "a3f04be7514e44d68df16209b9f5bac7",
+            "document_name": "multipage-invoice.pdf",
+            "page": 1,
+            "excerpt": "Invoice number: MULTI-001"
+          },
+          {
+            "id": "a3f04be7p1-119d4d66cc",
+            "document_id": "a3f04be7514e44d68df16209b9f5bac7",
+            "document_name": "multipage-invoice.pdf",
+            "page": 1,
+            "excerpt": "Vendor: Horizon Office"
+          },
+          {
+            "id": "a3f04be7p1-9fe28811e6",
+            "document_id": "a3f04be7514e44d68df16209b9f5bac7",
+            "document_name": "multipage-invoice.pdf",
+            "page": 1,
+            "excerpt": "Invoice date: 2026-09-15"
+          },
+          {
+            "id": "a3f04be7p2-d456a15544",
+            "document_id": "a3f04be7514e44d68df16209b9f5bac7",
+            "document_name": "multipage-invoice.pdf",
+            "page": 2,
+            "excerpt": "Due date: 2026-10-01"
+          },
+          {
+            "id": "a3f04be7p2-43198133c6",
+            "document_id": "a3f04be7514e44d68df16209b9f5bac7",
+            "document_name": "multipage-invoice.pdf",
+            "page": 2,
+            "excerpt": "Currency: AED"
+          },
+          {
+            "id": "a3f04be7p2-7487df4087",
+            "document_id": "a3f04be7514e44d68df16209b9f5bac7",
+            "document_name": "multipage-invoice.pdf",
+            "page": 2,
+            "excerpt": "Subtotal: AED 100.00"
+          },
+          {
+            "id": "a3f04be7p2-1b22b9bb97",
+            "document_id": "a3f04be7514e44d68df16209b9f5bac7",
+            "document_name": "multipage-invoice.pdf",
+            "page": 2,
+            "excerpt": "Tax: AED 0.00"
+          },
+          {
+            "id": "a3f04be7p2-0b90a0d61d",
+            "document_id": "a3f04be7514e44d68df16209b9f5bac7",
+            "document_name": "multipage-invoice.pdf",
+            "page": 2,
+            "excerpt": "Total amount: AED 100.00"
+          },
+          {
+            "id": "a3f04be7p2-0013115d39",
+            "document_id": "a3f04be7514e44d68df16209b9f5bac7",
+            "document_name": "multipage-invoice.pdf",
+            "page": 2,
+            "excerpt": "Balance due: AED 100.00"
+          },
+          {
+            "id": "a3f04be7p2-3e299be293",
+            "document_id": "a3f04be7514e44d68df16209b9f5bac7",
+            "document_name": "multipage-invoice.pdf",
+            "page": 2,
+            "excerpt": "Payment status: unpaid"
+          }
+        ],
+        "calculations": [],
+        "issues": [
+          "multipage-invoice.pdf: The invoice lists Line item 1: AED 60.00 on page 1, while its subtotal is AED 100.00 on page 2. No other line-item detail is shown, so line-item completeness cannot be confirmed."
+        ],
+        "as_of": "2026-10-31",
+        "coverage": "all_accounting_records"
+      }
+    },
+    {
+      "id": "relevant-retrieval",
+      "category": "retrieval",
+      "status_correct": true,
+      "expected_facts_present": true,
+      "source_page_coverage": 1.0,
+      "citation_excerpts_valid": true,
+      "answer": {
+        "status": "answered",
+        "title": "Customer on invoice CED-001",
+        "claims": [
+          {
+            "text": "The customer is Example Accounting LLC.",
+            "source_ids": [
+              "S1"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "id": "S1",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "LEDGERLENS / SYNTHETIC DEMONSTRATION DATA\nInvoice CED-001\n\n\n\n\nVendor: Cedar Supplies\n\nInvoice number: CED-001\n\nInvoice date: 2026-09-15\n\nDue date: 2026-10-01\n\nCurrency: AED\n\nDescription: Office supplies and services for CED-001\n\nSubtotal: AED 1200.00\n\nTax: AED 0.00\n\nTotal amount: AED 1200.00\n\nPayment status: unpaid\n\nBalance due: AED 1200.00\n\nCustomer: Example Accounting LLC\n\nSynthetic fixture. Not a real invoice.\n\n\n\n\n\nFor software evaluation only. All names and figures are fictional.                                      Page 1 of 1"
+          }
+        ],
+        "calculations": [],
+        "issues": [],
+        "as_of": "2026-10-31",
+        "coverage": "retrieved_passages"
+      }
+    },
+    {
+      "id": "missing-information",
+      "category": "abstention",
+      "status_correct": true,
+      "expected_facts_present": true,
+      "source_page_coverage": null,
+      "citation_excerpts_valid": true,
+      "answer": {
+        "status": "insufficient_information",
+        "title": "Cedar Supplies bank account number",
+        "claims": [],
+        "sources": [],
+        "calculations": [],
+        "issues": [
+          "The supplied passage identifies Cedar Supplies as the vendor but does not provide a bank account number."
+        ],
+        "as_of": "2026-10-31",
+        "coverage": "full_selected_documents"
+      }
+    },
+    {
+      "id": "keyword-hard-negative",
+      "category": "abstention",
+      "status_correct": true,
+      "expected_facts_present": true,
+      "source_page_coverage": null,
+      "citation_excerpts_valid": true,
+      "answer": {
+        "status": "insufficient_information",
+        "title": "Cedar\u2019s 2025 annual audit invoice",
+        "claims": [],
+        "sources": [],
+        "calculations": [],
+        "issues": [
+          "The supplied passage is for Cedar Supplies invoice CED-001 dated 2026-09-15, describing office supplies and services; it does not identify a 2025 annual audit invoice or its total."
+        ],
+        "as_of": "2026-10-31",
+        "coverage": "full_selected_documents"
+      }
+    },
+    {
+      "id": "partial-answer",
+      "category": "retrieval",
+      "status_correct": true,
+      "expected_facts_present": true,
+      "source_page_coverage": 1.0,
+      "citation_excerpts_valid": true,
+      "answer": {
+        "status": "answered",
+        "title": "CED-001 vendor and bank account",
+        "claims": [
+          {
+            "text": "The vendor on CED-001 is Cedar Supplies.",
+            "source_ids": [
+              "S1"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "id": "S1",
+            "document_id": "b0a14766043745129d226f5c40f5ba2a",
+            "document_name": "cedar-001.pdf",
+            "page": 1,
+            "excerpt": "LEDGERLENS / SYNTHETIC DEMONSTRATION DATA\nInvoice CED-001\n\n\n\n\nVendor: Cedar Supplies\n\nInvoice number: CED-001\n\nInvoice date: 2026-09-15\n\nDue date: 2026-10-01\n\nCurrency: AED\n\nDescription: Office supplies and services for CED-001\n\nSubtotal: AED 1200.00\n\nTax: AED 0.00\n\nTotal amount: AED 1200.00\n\nPayment status: unpaid\n\nBalance due: AED 1200.00\n\nCustomer: Example Accounting LLC\n\nSynthetic fixture. Not a real invoice.\n\n\n\n\n\nFor software evaluation only. All names and figures are fictional.                                      Page 1 of 1"
+          }
+        ],
+        "calculations": [],
+        "issues": [
+          "The bank account number was not found in the retrieved passage."
+        ],
+        "as_of": "2026-10-31",
+        "coverage": "retrieved_passages"
+      }
+    }
+  ]
+}
